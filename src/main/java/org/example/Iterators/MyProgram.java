@@ -3,6 +3,7 @@ package org.example.Iterators;
 import org.example.Instructions;
 import org.example.Task;
 
+import javax.swing.*;
 import java.util.*;
 
 public class MyProgram implements Iterable<Task>{
@@ -51,6 +52,20 @@ public class MyProgram implements Iterable<Task>{
     public void MostCommon(){
         ArrayList<Instructions> inss = Count();
         System.out.println(inss.getFirst());
+    }
+    public void MemoryRange(){
+        int min = 1025, max = -1;
+        for(Task t: prog){
+            if (t.getIns() == Instructions.load){
+                if (t.getArg1()>max) max = t.getArg1();
+                if (t.getArg1()<min) min = t.getArg1();
+            }
+            if (t.getIns() == Instructions.saveTo){
+                if (t.getArg2()>max) max = t.getArg2();
+                if (t.getArg2()<min) min = t.getArg2();
+            }
+        }
+        System.out.println("MemoryRange:"+"("+min+","+max+")");
     }
     public void Add(Task t){
         prog.add(t);

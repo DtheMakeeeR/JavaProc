@@ -21,14 +21,15 @@ public class Main {
         }*/
         MyProgram pr = new MyProgram();
         pr.Add(new Task(Instructions.init, 10, 0));
-        pr.Add(new Task(Instructions.init, 5, 1));
+        pr.Add(new Task(Instructions.init, 5, 10));
         pr.Add(new Task(Instructions.load, 0, 0));
-        pr.Add(new Task(Instructions.load, 1, 1));
+        pr.Add(new Task(Instructions.load, 10, 1));
         pr.Add(new Task(Instructions.add, 0, 1, 2));
         pr.Add(new Task(Instructions.show));
         //pr.Print();
         pr.TypeSorted();
         pr.MostCommon();
+        pr.MemoryRange();
         MyExecuter exe = new MyExecuter(p);
         try {
             exe.Run(pr);
