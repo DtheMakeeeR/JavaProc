@@ -18,19 +18,19 @@ public class MyProcessor implements IProcessor{
     public void Run(Task t) throws Exception{
         modules.Calculate(t, this);
     }
-    void SetRegister(int value, int number) throws Exception{
+    public void SetRegister(int value, int number) throws Exception{
         if ((number < 0) || (number > 3)) throw new Exception("Index error");
         registers[number] = value;
     }
-    int GetRegister(int number) throws Exception{
+    public int GetRegister(int number) throws Exception{
         if ((number < 0) || (number > 3)) throw new Exception("Index error");
         return registers[number];
     }
-    void SetMemory(int value, int number) throws Exception{
+    public void SetMemory(int value, int number) throws Exception{
         if ((number < 0) || (number > 1023)) throw new Exception("Index error");
         memory[number] = value;
     }
-    int GetMemory(int number) throws Exception{
+    public int GetMemory(int number) throws Exception{
         if ((number < 0) || (number > 1023)) throw new Exception("Index error");
         return memory[number];
     }

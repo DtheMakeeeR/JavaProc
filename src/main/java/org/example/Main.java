@@ -7,7 +7,6 @@ import org.example.Processors.PBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
         IProcessor p = new PBuilder().Build();
         /*try{
         p.Run(new Task(Instructions.load, 9, 0 ));
@@ -27,6 +26,8 @@ public class Main {
         pr.Add(new Task(Instructions.load, 1, 1));
         pr.Add(new Task(Instructions.add, 0, 1, 2));
         pr.Add(new Task(Instructions.show));
+        //pr.Print();
+        pr.TypeSorted();
         MyExecuter exe = new MyExecuter(p);
         try {
             exe.Run(pr);

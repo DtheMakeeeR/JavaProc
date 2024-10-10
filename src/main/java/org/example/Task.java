@@ -1,10 +1,10 @@
 package org.example;
 
 public class Task {
-    Instructions instruction;
-    int arg1 = -1;
-    int arg2 = -1;
-    int arg3 = -1;
+    public Instructions instruction;
+    public int arg1 = -1;
+    public int arg2 = -1;
+    public int arg3 = -1;
     public Task(Instructions ins){
         instruction = ins;
     }
@@ -18,5 +18,28 @@ public class Task {
         arg2 = _arg2;
         arg3 = _arg3;
         instruction = ins;
+    }
+
+    public Instructions getIns() {
+        return instruction;
+    }
+
+    public int getArg1() {
+        return arg1;
+    }
+
+    public int getArg2() {
+        return arg2;
+    }
+
+    public int getArg3() {
+        return arg3;
+    }
+    @Override
+    public String toString() {
+        return  instruction +
+                " " + (arg1>=0?arg1:" ") +
+                " " + (arg2>=0?arg2:" ") +
+                " " + (arg3>=0?arg3:" ") ;
     }
 }
