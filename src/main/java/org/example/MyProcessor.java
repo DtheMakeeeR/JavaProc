@@ -7,9 +7,6 @@ public class MyProcessor implements IProcessor{
     public MyProcessor(){
         modules = new MyALU();
         modules.Add(new MyTracker()).Add(new MyVisualModule());
-        for (int i = 0; i < 1024; i++){
-            memory[i] = i;
-        }
     }
     @Override
     public void Run(Task t) throws Exception{

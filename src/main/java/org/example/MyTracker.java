@@ -8,6 +8,14 @@ public class MyTracker extends MyModule{
         else if (t.instruction == Instructions.load) {
             p.SetRegister(p.GetMemory(t.arg1), t.arg2);
         }
+        else if (t.instruction == Instructions.move){
+            p.SetRegister(p.GetRegister(t.arg1), t.arg2);
+        }
+        else if (t.instruction == Instructions.init){
+            for (int i = 0; i < 1024; i++){
+                p.SetMemory(i, i);
+            }
+        }
         else{
             super.Calculate(t, p);
         }
