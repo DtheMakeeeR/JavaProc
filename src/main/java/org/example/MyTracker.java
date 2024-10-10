@@ -12,9 +12,7 @@ public class MyTracker extends MyModule{
             p.SetRegister(p.GetRegister(t.arg1), t.arg2);
         }
         else if (t.instruction == Instructions.init){
-            for (int i = 0; i < 1024; i++){
-                p.SetMemory(i, i);
-            }
+            p.SetMemory(t.arg1, t.arg2);
         }
         else{
             super.Calculate(t, p);
