@@ -1,4 +1,10 @@
-package org.example;
+package org.example.Processors;
+
+import org.example.Handlers.MyALU;
+import org.example.Handlers.MyModule;
+import org.example.Handlers.MyTracker;
+import org.example.Handlers.MyVisualModule;
+import org.example.Task;
 
 public class MyProcessor implements IProcessor{
     int[] memory = new int[1024];

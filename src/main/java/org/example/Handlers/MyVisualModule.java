@@ -1,4 +1,8 @@
-package org.example;
+package org.example.Handlers;
+
+import org.example.Instructions;
+import org.example.Processors.MyProcessor;
+import org.example.Task;
 
 public class MyVisualModule extends MyModule{
     public void Calculate(Task t, MyProcessor p) throws Exception{

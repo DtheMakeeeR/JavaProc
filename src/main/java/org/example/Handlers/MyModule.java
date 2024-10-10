@@ -1,12 +1,15 @@
-package org.example;
+package org.example.Handlers;
+
+import org.example.Processors.MyProcessor;
+import org.example.Task;
 
 public class MyModule {
     MyModule next;
-    MyModule Add(MyModule _next){
+    public MyModule Add(MyModule _next){
         next = _next;
         return _next;
     }
-    void Calculate(Task t, MyProcessor p) throws Exception{
+    public void Calculate(Task t, MyProcessor p) throws Exception{
         if (next != null){
             next.Calculate(t, p);
         }
