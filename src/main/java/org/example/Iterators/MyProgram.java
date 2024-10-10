@@ -18,7 +18,7 @@ public class MyProgram implements Iterable<Task>{
         }
         return set;
     }
-    HashMap<Instructions, Integer> Count(){
+    ArrayList<Instructions> Count(){
         HashMap<Instructions, Integer> InsCount = new HashMap<>();
         Set<Instructions> set = GetUniqueInstructions();
         for (Instructions i: set){
@@ -28,11 +28,6 @@ public class MyProgram implements Iterable<Task>{
             //InsCount.put(t.getInstruction(), InsCount.get(t.getInstruction())+1);
             InsCount.replace(t.getIns(), InsCount.get(t.getIns())+1);
         }
-        return InsCount;
-    }
-    public void TypeSorted(){
-        HashMap<Instructions, Integer> InsCount = Count();
-        //Instructions[] inss = new Instructions[InsCount.size()];
         ArrayList<Instructions> inss = new ArrayList<>();
         for (Instructions i:InsCount.keySet()){
             inss.add(i);
@@ -44,9 +39,18 @@ public class MyProgram implements Iterable<Task>{
             }
         };
         Collections.sort(inss, comparator);
+        return inss;
+    }
+    public void TypeSorted(){
+        //Instructions[] inss = new Instructions[InsCount.size()];
+        ArrayList<Instructions> inss = Count();
         for (Instructions i: inss){
             System.out.println(i);
         }
+    }
+    public void MostCommon(){
+        ArrayList<Instructions> inss = Count();
+        System.out.println(inss.getFirst());
     }
     public void Add(Task t){
         prog.add(t);

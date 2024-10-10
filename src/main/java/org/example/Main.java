@@ -28,6 +28,7 @@ public class Main {
         pr.Add(new Task(Instructions.show));
         //pr.Print();
         pr.TypeSorted();
+        pr.MostCommon();
         MyExecuter exe = new MyExecuter(p);
         try {
             exe.Run(pr);
