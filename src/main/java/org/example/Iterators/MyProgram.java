@@ -12,14 +12,14 @@ public class MyProgram implements Iterable<Task>{
     public Iterator<Task> iterator() {
         return prog.iterator();
     }
-    Set<Instructions> GetUniqueInstructions(){
+    private Set<Instructions> GetUniqueInstructions(){
         Set<Instructions> set = new HashSet<>();
         for(Task t: prog){
             set.add(t.getIns());
         }
         return set;
     }
-    ArrayList<Instructions> Count(){
+    private ArrayList<Instructions> Count(){
         HashMap<Instructions, Integer> InsCount = new HashMap<>();
         Set<Instructions> set = GetUniqueInstructions();
         for (Instructions i: set){
@@ -29,29 +29,27 @@ public class MyProgram implements Iterable<Task>{
             //InsCount.put(t.getInstruction(), InsCount.get(t.getInstruction())+1);
             InsCount.replace(t.getIns(), InsCount.get(t.getIns())+1);
         }
-        ArrayList<Instructions> inss = new ArrayList<>();
-        for (Instructions i:InsCount.keySet()){
-            inss.add(i);
-        }
+        ArrayList<Instructions> ins = new ArrayList<>(InsCount.keySet());
+
         Comparator<Instructions> comparator = new Comparator<Instructions>() {
             @Override
             public int compare(Instructions o1, Instructions o2) {
                 return InsCount.get(o2).compareTo(InsCount.get(o1));
             }
         };
-        Collections.sort(inss, comparator);
-        return inss;
+        ins.sort(comparator);
+        return ins;
     }
     public void TypeSorted(){
-        //Instructions[] inss = new Instructions[InsCount.size()];
-        ArrayList<Instructions> inss = Count();
-        for (Instructions i: inss){
+        //Instructions[] ins = new Instructions[InsCount.size()];
+        ArrayList<Instructions> ins = Count();
+        for (Instructions i: ins){
             System.out.println(i);
         }
     }
     public void MostCommon(){
-        ArrayList<Instructions> inss = Count();
-        System.out.println(inss.getFirst());
+        ArrayList<Instructions> ins = Count();
+        System.out.println(ins.getFirst());
     }
     public void MemoryRange(){
         int min = 1025, max = -1;
