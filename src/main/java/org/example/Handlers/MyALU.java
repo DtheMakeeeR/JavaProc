@@ -10,13 +10,13 @@ public class MyALU extends MyModule{
             p.SetRegister(p.GetRegister(0) + p.GetRegister(1),2);
         }
         else if (t.instruction == Instructions.add){
-            p.SetRegister(p.GetRegister(t.arg1) + p.GetRegister(t.arg2), t.arg3);
+            p.SetRegister(p.GetRegister(t.address1) + p.GetRegister(t.address2), t.address3);
         }
         else if (t.instruction == Instructions.sub){
-            p.SetRegister(p.GetRegister(t.arg1) - p.GetRegister(t.arg2), t.arg3);
+            p.SetRegister(p.GetRegister(t.address1) - p.GetRegister(t.address2), t.address3);
         }
         else if (t.instruction == Instructions.mult){
-            p.SetRegister(p.GetRegister(t.arg1) * p.GetRegister(t.arg2), t.arg3);
+            p.SetRegister(p.GetRegister(t.address1) * p.GetRegister(t.address2), t.address3);
         }
         else{
             super.Calculate(t, p);

@@ -3,7 +3,6 @@ package org.example.Iterators;
 import org.example.Instructions;
 import org.example.Task;
 
-import javax.swing.*;
 import java.util.*;
 
 public class MyProgram implements Iterable<Task>{
@@ -19,14 +18,13 @@ public class MyProgram implements Iterable<Task>{
         }
         return set;
     }
-    private ArrayList<Instructions> Count(){
+    public ArrayList<Instructions> SortedIns(){
         HashMap<Instructions, Integer> InsCount = new HashMap<>();
         Set<Instructions> set = GetUniqueInstructions();
         for (Instructions i: set){
             InsCount.put(i, 0);
         }
         for (Task t: prog){
-            //InsCount.put(t.getInstruction(), InsCount.get(t.getInstruction())+1);
             InsCount.replace(t.getIns(), InsCount.get(t.getIns())+1);
         }
         ArrayList<Instructions> ins = new ArrayList<>(InsCount.keySet());
@@ -40,27 +38,24 @@ public class MyProgram implements Iterable<Task>{
         ins.sort(comparator);
         return ins;
     }
-    public void TypeSorted(){
-        //Instructions[] ins = new Instructions[InsCount.size()];
-        ArrayList<Instructions> ins = Count();
-        for (Instructions i: ins){
-            System.out.println(i);
-        }
-    }
-    public void MostCommon(){
-        ArrayList<Instructions> ins = Count();
-        System.out.println(ins.getFirst());
+    public Instructions MostCommon(){
+        ArrayList<Instructions> ins = SortedIns();
+        return ins.getFirst();
     }
     public void MemoryRange(){
         int min = 1025, max = -1;
         for(Task t: prog){
             if (t.getIns() == Instructions.load){
-                if (t.getArg1()>max) max = t.getArg1();
-                if (t.getArg1()<min) min = t.getArg1();
+                if (t.getAddress1()>max) max = t.getAddress1();
+                if (t.getAddress1()<min) min = t.getAddress1();
             }
             if (t.getIns() == Instructions.saveTo){
-                if (t.getArg2()>max) max = t.getArg2();
-                if (t.getArg2()<min) min = t.getArg2();
+                if (t.getAddress2()>max) max = t.getAddress2();
+                if (t.getAddress2()<min) min = t.getAddress2();
+            }
+            if (t.getIns() == Instructions.init){
+                if (t.getAddress1()>max) max = t.getAddress1();
+                if (t.getAddress1()<min) min = t.getAddress1();
             }
         }
         System.out.println("MemoryRange:"+"("+min+","+max+")");
