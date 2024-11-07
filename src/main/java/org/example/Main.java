@@ -20,7 +20,7 @@ public class Main {
         pr.Add(new Task(Instructions.show));
 
         //pr.Print();
-        for (Task t: pr) System.out.println(t);
+        //for (Task t: pr) System.out.println(t);
         System.out.println(pr.SortedIns());
         System.out.println(pr.MostCommon());
         pr.MemoryRange();

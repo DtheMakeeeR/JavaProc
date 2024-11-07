@@ -4,6 +4,7 @@ import org.example.Instructions;
 import org.example.Task;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MyProgram implements Iterable<Task>{
     ArrayList<Task> prog = new ArrayList<Task>();
@@ -12,11 +13,14 @@ public class MyProgram implements Iterable<Task>{
         return prog.iterator();
     }
     private Set<Instructions> GetUniqueInstructions(){
-        Set<Instructions> set = new HashSet<>();
-        for(Task t: prog){
-            set.add(t.getIns());
-        }
-        return set;
+//        Set<Instructions> set = new HashSet<>();
+//        for(Task t: prog){
+//            set.add(t.getIns());
+//        }
+//        return set;
+//        return prog.stream().collect(HashSet::new, (v1, v2)->{
+//            v1.add(v2.getIns());}, AbstractCollection::addAll);
+          return prog.stream().map(Task::getIns).collect(Collectors.toSet());
     }
     public ArrayList<Instructions> SortedIns(){
         HashMap<Instructions, Integer> InsCount = new HashMap<>();
@@ -29,13 +33,14 @@ public class MyProgram implements Iterable<Task>{
         }
         ArrayList<Instructions> ins = new ArrayList<>(InsCount.keySet());
 
-        Comparator<Instructions> comparator = new Comparator<Instructions>() {
-            @Override
-            public int compare(Instructions o1, Instructions o2) {
-                return InsCount.get(o2).compareTo(InsCount.get(o1));
-            }
-        };
-        ins.sort(comparator);
+//        Comparator<Instructions> comparator = new Comparator<Instructions>() {
+//            @Override
+//            public int compare(Instructions o1, Instructions o2) {
+//                return InsCount.get(o2).compareTo(InsCount.get(o1));
+//            }
+//        };
+//        ins.sort(comparator);
+        ins.sort((o1, o2)->InsCount.get(o2).compareTo(InsCount.get(o1)));
         return ins;
     }
     public Instructions MostCommon(){
